@@ -4,6 +4,7 @@ import React from "react"
 import BankCard from "./BankCard"
 import { countTransactionCategories } from "@/lib/utils"
 import Category from "./Category"
+import { BadgeMinus } from "lucide-react"
 
 const RightSidebar = ({user,transactions,banks}:RightSidebarProps) => {
   const categories:CategoryCount[]=countTransactionCategories(transactions)
@@ -50,6 +51,17 @@ const RightSidebar = ({user,transactions,banks}:RightSidebarProps) => {
                 showBalance={false}
               />
             </div>
+            {banks[1]&&(
+              <div className="absolute right-0 top-8 z-0 w-[90%]">
+                <BankCard
+                  key={banks[1].$id}
+                  account={banks[1]}
+                  userName={`${user.firstName} ${user.lastName}`}
+                  showBalance={false}
+                />
+
+              </div>
+            )}
 
           </div>
         )}
